@@ -17,7 +17,7 @@ body {
 }
 
 .container-title {
-    width: 80%;
+  width: 80%;
 }
 
 .title {
@@ -26,53 +26,84 @@ body {
     padding-left: 30px;
 }
 
+.title strong {
+  color: white;
+}
+
 .container-cartTitle {
-    position: relative;
-    display: flex;
-    align-items: center;
-    background-color: rgb(10, 118, 79);
-    width: 40%;
-    height: 100%;
-    margin-left: 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: rgb(10, 118, 79);
+  width: 40%;
+  height: 100%;
+  margin-left: 30px;
 }
 
 .container-cartTitle span {
-    z-index: 1;
+  z-index: 1;
 }
 
 .container-cartTitle:before {
-    content: "";
-    position: absolute;
-    top: 30px;
-    right: 61.5%;
-    width: 39.5%;
-    height: 15px;
-    background: rgb(10, 118, 79);
-    transform: skew(45deg);
+  content: "";
+  position: absolute;
+  top: 30px;
+  right: 61.5%;
+  width: 39.5%;
+  height: 15px;
+  background: rgb(10, 118, 79);
+  transform: skew(45deg);
 }
 
 .container-cartTitle:after {
-    content: "";
-    position: absolute;
-    top: 15px;
-    right: 61.5%;
-    width: 39.5%;
-    height: 15px;
-    background: rgb(10, 118, 79);
-    transform: skew(-45deg);
+  content: "";
+  position: absolute;
+  top: 15px;
+  right: 61.5%;
+  width: 39.5%;
+  height: 15px;
+  background: rgb(10, 118, 79);
+  transform: skew(-45deg);
 }
 
 .container-cartTitle .cart__title {
-    color: white;
-    font-size: 20px;
-    padding-left: 35px;
-    font-weight: 700;
+  color: white;
+  font-size: 20px;
+  padding-left: 35px;
+  font-weight: 700;
 }
 
 .cart__title {
-    color: white;
+  color: white;
 }
 
-.title strong {
-    color: white;
+.container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.cart {
+  display: flex;
+  flex-flow: column;
+  background-color: rgb(241, 241, 238);
+  flex-basis: 32.5%;
+  height: 100vh;
+}
+
+.items {
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-basis: 70%;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+
+.empty-cart {
+  width: 170px;
+  height: 35px;
+  margin: 0 auto;
+  border: 2px solid rgb(5, 52, 209);
+  background-color: rgb(249, 249, 246);
 }
