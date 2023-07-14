@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script src="./helpers/fetchProducts.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
     <header class="header">
-        <div class="container-title">
-            <span class="title"><strong>trybe</strong>shopping</span>
-        </div>
-        <i class="material-icons" style="font-size:45px;color: white">shopping_cart</i>
-        <div class="container-cartTitle">
-            <span class="cart__title">Meu carrinho</span>
-        </div>
+      <div class="container-title">
+        <span class="title"><strong>trybe</strong>shopping</span>
+      </div>
+      <i class="material-icons" style="font-size: 45px; color: white"
+        >shopping_cart</i
+      >
+      <div class="container-cartTitle">
+        <span class="cart__title">Meu carrinho</span>
+      </div>
     </header>
     <section class="container">
-        <section class="items"></section>
-        <section class="cart">
-            <button class="empty-cart">Esvaziar carrinho</button>
-        </section>
+      <section class="items"></section>
+      <section class="cart">
+        <button class="empty-cart">Esvaziar carrinho</button>
+      </section>
     </section>
-</body>
+  </body>
 </html>
