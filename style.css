@@ -135,6 +135,11 @@ body {
   color: white;
 }
 
+.cart .cart__item {
+  height: 50px;
+  cursor: pointer;
+}
+
 .empty-cart {
   width: 170px;
   height: 35px;

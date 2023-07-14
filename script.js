@@ -12,6 +12,33 @@ function createCustomElement(element, className, innerText) {
   return e;
 }
 
+function cartItemClickListener(event) {
+  const listenerItemWithClick = event.target;
+  document
+    .getElementsByClassName("cart__items")[0]
+    .removeChild(listenerItemWithClick);
+}
+
+function createCartItemElement({ sku, name, salePrice }) {
+  const li = document.createElement("li");
+  li.className = "cart__item";
+  li.innerText = `ID: ${sku} | NAME: ${name} | PRICE: $${salePrice}`; 
+  li.addEventListener("click", cartItemClickListener);
+  return li;
+}
+
+const addProductsToCart = async (buttonAddToCart) => {
+  const text = buttonAddToCart.target.parentNode.firstElementChild.innerText;
+  const { id, title, price } = await fetchItem(text);
+  const sku = id;
+  const name = title;
+  const salePrice = price;
+  const listProductsToCart = document.querySelector(".cart__items");
+  listProductsToCart.appendChild(
+    createCartItemElement({ sku, name, salePrice })
+  );
+};
+
 function createProductItemElement({ sku, name, image }) {
   const section = document.createElement("section");
   section.className = "item";
@@ -19,19 +46,23 @@ function createProductItemElement({ sku, name, image }) {
   section.appendChild(createCustomElement("span", "item__sku", sku));
   section.appendChild(createCustomElement("span", "item__title", name));
   section.appendChild(createProductImageElement(image));
-  section.appendChild(
-    createCustomElement("button", "item__add", "Adicionar ao carrinho!")
-  );
+  section
+    .appendChild(
+      createCustomElement("button", "item__add", "Adicionar ao carrinho!")
+    )
+    .addEventListener("click", addProductsToCart);
 
   return section;
 }
+
+const improveImageQuality = (thumbnail) => thumbnail.replace('I.jpg', 'W.jpg')
 
 const productList = async (itemId) => {
   const dataProduct = await fetchProducts(itemId);
   await dataProduct.results.forEach(({ id, title, thumbnail }) => {
     const sku = id;
     const name = title;
-    const image = thumbnail;
+    const image = improveImageQuality(thumbnail);
     document
       .querySelector(".items")
       .appendChild(createProductItemElement({ sku, name, image }));
