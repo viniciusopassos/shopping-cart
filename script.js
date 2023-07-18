@@ -22,7 +22,7 @@ function cartItemClickListener(event) {
 function createCartItemElement({ sku, name, salePrice }) {
   const li = document.createElement("li");
   li.className = "cart__item";
-  li.innerText = `ID: ${sku} | NAME: ${name} | PRICE: $${salePrice}`; 
+  li.innerText = `ID: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
   li.addEventListener("click", cartItemClickListener);
   return li;
 }
@@ -55,10 +55,10 @@ function createProductItemElement({ sku, name, image }) {
   return section;
 }
 
-const improveImageQuality = (thumbnail) => thumbnail.replace('I.jpg', 'W.jpg')
-
 const productList = async (itemId) => {
   const dataProduct = await fetchProducts(itemId);
+  const improveImageQuality = (thumbnail) =>
+    thumbnail.replace("I.jpg", "W.jpg");
   await dataProduct.results.forEach(({ id, title, thumbnail }) => {
     const sku = id;
     const name = title;
@@ -69,6 +69,30 @@ const productList = async (itemId) => {
   });
 };
 
-window.onload = () => {
-  productList();
+function emptyCart() {
+  const getProductsOnCart = document.querySelector(".cart__items");
+  const getButtonEmptyCart = document.querySelector(".empty-cart");
+
+  getButtonEmptyCart.addEventListener("click", () => {
+    getProductsOnCart.innerHTML = `<div/>`;
+  });
+}
+
+function messageToUser() {
+  const loadingElement = document.createElement("section");
+  loadingElement.className = "loading";
+  const getElement = document.querySelector(".items");
+  getElement.appendChild(loadingElement);
+  loadingElement.innerText = "Carregando...";
+}
+
+function messageEnd() {
+  document.querySelector(".loading").remove();
+}
+
+window.onload = async () => {
+  messageToUser();
+  await productList();
+  emptyCart();
+  messageEnd();
 };
